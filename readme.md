@@ -12,3 +12,7 @@ C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar create-project -
 ``` php
 C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar update
 ```
+
+## 分支介绍
+
+- laravel_cors 跨域解决方案
