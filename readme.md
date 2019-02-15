@@ -31,7 +31,7 @@ class CORS
 ```
 - 解决前后端分离应用跨域请求利器 —— Laravel CORS 扩展包
 
-github 地址：https://github.com/barryvdh/laravel-cors
+    github 地址：https://github.com/barryvdh/laravel-cors
 
 - 我想在我的服务器上添加CORS支持[文章](https://enable-cors.org/server.html)
     - [Apache](https://enable-cors.org/server_apache.html)
