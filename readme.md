@@ -17,5 +17,9 @@ C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar update
 
 - [laravel_cors](https://github.com/amoswdh/Laravel-Help/tree/laravel_cors) 跨域解决方案
 
+## php artisan migrate 常见错误
+
+- [Specified key was too long error](https://laravel-news.com/laravel-5-4-key-too-long-error)
+
 ## 官网
 - [Apache](http://www.apache.org/)
