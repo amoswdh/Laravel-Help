@@ -129,3 +129,289 @@ class AuthServiceProvider extends ServiceProvider
     }
 }
 ```
+
+### config/auth.php
+### 在 config/auth.php 文件, 设置Passport为API默认认证
+
+``` php
+return [
+
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+    ],
+
+]
+```
+
+### 创建路由
+
+<p>添加路由在 routes/api.php 文件中.</p>
+
+``` php
+Route::post('login', 'PassportController@login');
+Route::post('register', 'PassportController@register');
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('user', 'PassportController@details');
+
+    Route::resource('products', 'ProductController');
+});
+```
+
+### 创建认证控制器
+
+``` shell
+php artisan make:controller PassportController
+```
+
+<p>复制以下内容到 app/Http/Controllers/PassportController.php</p>
+
+``` php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\User;
+use Illuminate\Http\Request;
+
+class PassportController extends Controller
+{
+    /**
+     * Handles Registration Request
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        $token = $user->createToken('TutsForWeb')->accessToken;
+
+        return response()->json(['token' => $token], 200);
+    }
+
+    /**
+     * Handles Login Request
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(Request $request)
+    {
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        if (auth()->attempt($credentials)) {
+            $token = auth()->user()->createToken('TutsForWeb')->accessToken;
+            return response()->json(['token' => $token], 200);
+        } else {
+            return response()->json(['error' => 'UnAuthorised'], 401);
+        }
+    }
+
+    /**
+     * Returns Authenticated User Details
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function details()
+    {
+        return response()->json(['user' => auth()->user()], 200);
+    }
+}
+```
+
+### 创建 Product CRUD
+
+<p>创建 product CRUD. 使用以下命令去创建Product模型, 迁移文件和控制器.</p>
+
+``` shell
+php artisan make:model Product -mc
+```
+
+<p>它会生成一个数据库迁移文件 create_products_table.php 在 database/migrations 目录. 使用下面代码更新 up 方法中的代码.</p>
+
+``` php
+public function up()
+{
+    Schema::create('products', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('user_id');
+        $table->string('name');
+        $table->integer('price');
+        $table->timestamps();
+
+        $table->foreign('user_id')
+            ->references('id')
+            ->on('users');
+    });
+}
+```
+
+<p>Product model添加fillable信息.</p>
+
+``` php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    protected $fillable = [
+        'name', 'price'
+    ];
+}
+```
+
+### 执行数据库迁移
+
+``` shell
+php artisan migrate
+```
+
+<p>将以下关联信息放到 app/User.php 文件.</p>
+
+``` php
+public function products()
+{
+    return $this->hasMany(Product::class);
+}
+```
+
+<p>打开 ProductController.php 文件在 app/Http/Controllers 目录. 复制以下代码进 Product Controller.</p>
+
+``` php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        $products = auth()->user()->products;
+
+        return response()->json([
+            'success' => true,
+            'data' => $products
+        ]);
+    }
+
+    public function show($id)
+    {
+        $product = auth()->user()->products()->find($id);
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Product with id ' . $id . ' not found'
+            ], 400);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $product->toArray()
+        ], 400);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required|integer'
+        ]);
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+
+        if (auth()->user()->products()->save($product))
+            return response()->json([
+                'success' => true,
+                'data' => $product->toArray()
+            ]);
+        else
+            return response()->json([
+                'success' => false,
+                'message' => 'Product could not be added'
+            ], 500);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = auth()->user()->products()->find($id);
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Product with id ' . $id . ' not found'
+            ], 400);
+        }
+
+        $updated = $product->fill($request->all())->save();
+
+        if ($updated)
+            return response()->json([
+                'success' => true
+            ]);
+        else
+            return response()->json([
+                'success' => false,
+                'message' => 'Product could not be updated'
+            ], 500);
+    }
+
+    public function destroy($id)
+    {
+        $product = auth()->user()->products()->find($id);
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Product with id ' . $id . ' not found'
+            ], 400);
+        }
+
+        if ($product->delete()) {
+            return response()->json([
+                'success' => true
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Product could not be deleted'
+            ], 500);
+        }
+    }
+}
+```
+
+### 测试
+
+<p>完成以上步骤，我们可以使用API测试工具Postman做接口的测试.</p>
