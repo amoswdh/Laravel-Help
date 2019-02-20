@@ -1,25 +1,17 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-## laravel 通过 Composer 新建项目
+## Laravel Passport – 创建REST API认证
 
-``` php
-C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar create-project --prefer-dist laravel/laravel blog
-```
-## 该项目使用
+## 说明
 
-- Git拉取项目源代码.
-- Composer 更新所需包文件.
-``` php
-C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar update
-```
+<p>
+在本教程中，我们将了解如何在您的Laravel应用程序中使用Laravel Passport身份验证。我们还将使用Laravel Passport身份验证构建一个简单的产品CRUD（创建、读取、更新和删除）。
+<p/>
 
-## 分支介绍
+<p>
+Laravel已经提供了传统的登录表单认证，但是如果您想使用API呢？API使用令牌对用户进行身份验证，因为它们不使用会话。当用户通过API登录时，会生成一个令牌并将其发送给用于身份验证的用户。Laravel提供了使用API认证的通行证，没有任何困难。
+<p/>
+<p>
+让我们看看如何在Laravel应用程序中设置和配置用于API身份验证的Laravel Passport和Restful API。
+<p/>
 
-- [laravel_cors](https://github.com/amoswdh/Laravel-Help/tree/laravel_cors) 跨域解决方案
-
-## php artisan migrate 常见错误
-
-- [Specified key was too long error](https://laravel-news.com/laravel-5-4-key-too-long-error)
-
-## 官网
-- [Apache](http://www.apache.org/)
