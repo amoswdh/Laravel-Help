@@ -419,3 +419,7 @@ class ProductController extends Controller
 ### 注册API
 
 <p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/register-1.png"></p>
+
+### 登录API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/login-1.png"></p>
