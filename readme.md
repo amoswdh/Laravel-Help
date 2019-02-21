@@ -415,3 +415,7 @@ class ProductController extends Controller
 ### 测试
 
 <p>完成以上步骤，我们可以使用API测试工具Postman做接口的测试.</p>
+
+### 注册API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/register-1.png"></p>
