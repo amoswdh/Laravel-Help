@@ -441,3 +441,18 @@ class ProductController extends Controller
 
 <p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/index.png"></p>
 
+### 产品商店API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/store.png"></p>
+
+### 产品展示API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/show.png"></p>
+
+### 产品更新API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/update.png"></p>
+
+### 产品删除API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/delete.png"></p>
