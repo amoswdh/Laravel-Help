@@ -423,3 +423,21 @@ class ProductController extends Controller
 ### 登录API
 
 <p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/login-1.png"></p>
+
+### 详细信息API
+
+<p>在测试Details API或需要用户进行身份验证的任何API时，您需要指定两个标头。您必须在授权标头中将访问令牌指定为承载令牌。基本上，你必须来连接你登录和注册使用后收到的访问令牌承载后面加一个空格。</p>
+
+``` php
+'headers' => [
+    'Accept' => 'application/json',
+    'Authorization' => 'Bearer '. $accessToken,
+]
+```
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/details.png"></p>
+
+### 产品索引API
+
+<p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/index.png"></p>
+
