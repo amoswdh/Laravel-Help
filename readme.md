@@ -456,3 +456,5 @@ class ProductController extends Controller
 ### 产品删除API
 
 <p><img src="https://github.com/amoswdh/Laravel-Help/blob/laravel-passport/blog/example/images/delete.png"></p>
+
+<p>[more](https://tutsforweb.com/laravel-passport-create-rest-api-with-authentication/)<p/>
