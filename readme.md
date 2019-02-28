@@ -1,25 +1,57 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-## laravel 通过 Composer 新建项目
+## 从零开始Laravel包开发指南
+
+<p>包开发适用与大部分PHP框架及项目.通用、易于复用.</p>
+
+### 为什么使用Laravel包开发?
+
+- 更好的编码技巧
+- 更多（和更好）的工作
+- 节省时间
+
+### 创建新程序包目录
 
 ``` php
-C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar create-project --prefer-dist laravel/laravel blog
+mkdir laravel-log-enhancer && cd laravel-log-enhancer
 ```
-## 该项目使用
 
-- Git拉取项目源代码.
-- Composer 更新所需包文件.
+### Git初始化 / Git clone
+
+<p>初始化git存储库。我们需要GitHub repo才能将软件包放到网上。</p>
+
+<p>通常，我会预先在Github新建一个项目，使用Git clone 将项目拉取到预先建立好的包目录.</p>
+
 ``` php
-C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar update
+git init
 ```
 
-## 分支介绍
+### composer.json
 
-- [laravel_cors](https://github.com/amoswdh/Laravel-Help/tree/laravel_cors) 跨域解决方案
+<p>每个包都以一个composer.json文件开头。让我们创建它。创建它的最简单方法是触发init命令。</p>
+<p>或者您可以从此存根中复制它并相应地进行更改。</p>
 
-## php artisan migrate 常见错误
+``` php
+composer init
+```
 
-- [Specified key was too long error](https://laravel-news.com/laravel-5-4-key-too-long-error)
+### 命名空间和自动加载
 
-## 官网
-- [Apache](http://www.apache.org/)
+<p>我们将把我们包的主要代码放在src目录中。</p>
+
+``` php
+mkdir src && cd src
+```
+
+<p>顺便说一下，就像Laravel Web应用程序开发一样，这里没有关于目录结构的硬规则，但是遵循一个公共的约定。</p>
+
+### 如何发布包
+
+1. push代码到Github
+2. 前往Packagist，创建一个帐户或登录，单击提交，指定GitHub repo URL;
+
+### 如何在本地使用该包
+
+``` php
+composer require amoswdh/packagename
+```
