@@ -35,6 +35,8 @@ git init
 composer init
 ```
 
+<p>执行该命令会显示以下选项，按照个人需要设置即可.</p>
+
 ``` php
 $ composer init
 
