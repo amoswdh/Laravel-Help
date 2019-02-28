@@ -35,6 +35,75 @@ git init
 composer init
 ```
 
+``` php
+$ composer init
+
+
+  Welcome to the Composer config generator
+
+
+
+This command will guide you through creating your composer.json config.
+
+// 1. 输入项目命名空间
+// 注意<vendor>/<name> 必须要符合 [a-z0-9_.-]+/[a-z0-9_.-]+
+Package name (<vendor>/<name>) [dell/htdocs]: yourname/projectname
+
+// 2. 项目描述
+Description []: 这是一个测试
+
+// 3. 输入作者信息，可以直接回车
+Author [guanguans <53222411@qq.com>, n to skip]:
+
+// 4. 输入最低稳定版本，stable, RC, beta, alpha, dev
+Minimum Stability []: dev
+
+// 5. 输入项目类型，
+Package Type (e.g. library, project, metapackage, composer-plugin) []: library
+
+// 6. 输入授权类型
+License []:
+> Define your dependencies.
+
+// 7. 输入依赖信息
+Would you like to define your dependencies (require) interactively [yes]?
+
+// 如果需要依赖，则输入要安装的依赖
+Search for a package: php
+
+// 输入版本号
+Enter the version constraint to require (or leave blank to use the latest version): >=5.4.0
+
+// 如需多个，则重复以上两个步骤
+
+// 8. 是否需要require-dev，
+Would you like to define your dev dependencies (require-dev) interactively [yes]?
+
+// 操作同上
+{
+    "name": "guanguans/uploadfile",
+    "description": "一个通用文件上传包",
+    "type": "library",
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "php": ">=5.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "guanguans",
+            "email": "yzmguanguan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
+
+// 9. 是否生成composer.json
+Do you confirm generation [yes]? yes
+```
+
 ### 命名空间和自动加载
 
 <p>我们将把我们包的主要代码放在src目录中。</p>
