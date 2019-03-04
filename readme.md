@@ -156,3 +156,4 @@ git push --tag
 ## 参考文章
 
 - [如何开发、本地测试、发布 Laravel 扩展包？](https://juejin.im/post/5a5571616fb9a01c975a1fcc)
+- [Composer & Laravel 包本地开发？](https://pigjian.com/article/composer-laravel-package-of-local-development)
