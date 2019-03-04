@@ -116,6 +116,21 @@ mkdir src && cd src
 
 <p>顺便说一下，就像Laravel Web应用程序开发一样，这里没有关于目录结构的硬规则，但是遵循一个公共的约定。</p>
 
+### 创建扩展包基本目录、文件
+
+<p>一般情况下，我们会创建以下文件和目录:</p>
+
+``` php
+angkee/laradmin
+├── src  #存放扩展包所有的逻辑代码
+├── tests # 存放测试用例
+├── README.md
+├── composer.json
+└── LICENSE
+```
+
+<p>顺便说一下，就像Laravel Web应用程序开发一样，这里没有关于目录结构的硬规则，但是遵循一个公共的约定。</p>
+
 ### 如何发布包
 
 1. push代码到Github
@@ -126,3 +141,18 @@ mkdir src && cd src
 ``` php
 composer require amoswdh/packagename
 ```
+
+### 设置版本信息
+
+<p>版本默认是 dev-master，Composer 包的版本号会从 Git 的 tag 中同步过来。</p>
+
+``` php
+git tag 1.0.0
+git push --tag
+```
+
+<p>扩展包刚发布，此时安装，可能会报找不到安装包的错误，需要稍等一下服务器同步，一般不过超过 3-5 分钟，如果一切正常，会看到版本提示，安装成功！</p>
+
+## 参考文章
+
+- [如何开发、本地测试、发布 Laravel 扩展包？](https://juejin.im/post/5a5571616fb9a01c975a1fcc)
