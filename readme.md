@@ -1,25 +1,28 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-## laravel 通过 Composer 新建项目
+## Laravel 的数据库迁移 Migrations
+
+<p>数据库迁移就像是数据库的版本控制，可以让你的团队轻松修改并共享应用程序的数据库结构。迁移通常与 Laravel 的数据库结构生成器配合使用，让你轻松地构建数据库结构。如果你曾经试过让同事手动在数据库结构中添加字段，那么数据库迁移可以让你不再需要做这样的事情。</p>
+
+## 生成迁移
 
 ``` php
-C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar create-project --prefer-dist laravel/laravel blog
-```
-## 该项目使用
+php artisan make:migration create_users_table --create=users
 
-- Git拉取项目源代码.
-- Composer 更新所需包文件.
+php artisan make:migration add_votes_to_users_table --table=users
+```
+
+## 运行迁移
+
 ``` php
-C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar update
+php artisan migrate
 ```
 
-## 分支介绍
+## 回滚迁移
 
-- [laravel_cors](https://github.com/amoswdh/Laravel-Help/tree/laravel_cors) 跨域解决方案
-
-## php artisan migrate 常见错误
-
-- [Specified key was too long error](https://laravel-news.com/laravel-5-4-key-too-long-error)
+``` php
+php artisan migrate:rollback
+```
 
 ## 官网
-- [Apache](http://www.apache.org/)
+- [官方迁移文档](https://learnku.com/docs/laravel/5.7/migrations/2291)
