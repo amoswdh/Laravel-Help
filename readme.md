@@ -21,5 +21,16 @@ C:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe composer.phar update
 
 - [Specified key was too long error](https://laravel-news.com/laravel-5-4-key-too-long-error)
 
+## 常用命令
+
+``` php
+路由列表：
+php artisan route:list
+模型生成：
+php artisan make:model Models/EmailAdmin
+控制器生成
+php artisan make:controller ArticleController
+```
+
 ## 官网
 - [Apache](http://www.apache.org/)
