@@ -32,5 +32,5 @@ php artisan make:model Models/EmailAdmin
 php artisan make:controller ArticleController
 ```
 
-## 官网
-- [Apache](http://www.apache.org/)
+## 官方链接
+- [5.7版本文档](https://laravelacademy.org/laravel-docs-5_7)
