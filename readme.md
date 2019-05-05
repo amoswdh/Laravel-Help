@@ -32,5 +32,14 @@ php artisan make:model Models/EmailAdmin
 php artisan make:controller ArticleController
 ```
 
+## 常见错误
+
+- file_put_contents(/export/data/tomcatRoot/www.xx.com/bootstrap/cache/services.php): failed to open stream: Permission denied
+
+<p>缺失缓存配置文件，使用以下命令生成即可：</p>
+``` php
+php artisan config:cache
+```
+
 ## 官方链接
 - [5.7版本文档](https://laravelacademy.org/laravel-docs-5_7)
