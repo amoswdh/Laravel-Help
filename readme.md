@@ -54,7 +54,7 @@ logfile=/export/logs/support.orderplus.com/email-imap.log
 
 # 常见错误
 
-- email-imap:email-imap_00: ERROR (spawn error)
+- email-imap:email-imap_00: ERROR (spawn error) / FATAL     Exited too quickly (process log may have details)
 
 #### 排查启动过程中出现的错误引起启动失败
 ``` php
