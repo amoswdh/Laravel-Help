@@ -51,3 +51,14 @@ log_stdout=true
 log_stderr=true
 logfile=/export/logs/support.orderplus.com/email-imap.log
 ```
+
+# 常见错误
+
+- email-imap:email-imap_00: ERROR (spawn error)
+
+#### 排查启动过程中出现的错误引起启动失败
+``` php
+supervisorctl tail -f email-imap:email-imap_00 stdout
+```
+<p>该命令用于排查启动失败引起的错误</p>
+
