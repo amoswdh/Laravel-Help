@@ -62,6 +62,7 @@ supervisorctl tail -f email-imap:email-imap_00 stdout
 ```
 <p>该命令用于排查启动失败引起的错误</p>
 <p>问题解决后<b>必须</b>以此执行以下命令：</p>
+
 ``` php
 supervisorctl update
 supervisorctl reload
